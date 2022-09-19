@@ -40,7 +40,6 @@ class AmenityDetail(APIView):
     amenity = self.get_object(pk) 
     serializer = AmenitySerializer(amenity, data=request.data, partial=True)
     if(serializer.is_valid()): 
-      
       updated_amenity = serializer.save() 
       return Response(AmenitySerializer(updated_amenity).data)
     else: 
