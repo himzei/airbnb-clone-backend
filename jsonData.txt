@@ -1,0 +1,14 @@
+{
+"name": "house good", 
+"country": "한국",
+"city": "서울", 
+"price": 1000000, 
+"rooms": 2, 
+"toilets": 2, 
+"descriptions": "DRF is awesome", 
+"address": "12345", 
+"pet_friendly": true, 
+"amenities": [1, 2,  4],
+"category": 3, 
+"kind": "private_room"
+}

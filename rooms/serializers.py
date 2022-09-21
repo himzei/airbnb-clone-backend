@@ -1,4 +1,6 @@
 from dataclasses import field
+from pickletools import read_long1
+from pkgutil import read_code
 from rest_framework.serializers import ModelSerializer
 from .models import Amenity, Room
 from users.serializers import TinyUserSerializer
@@ -11,10 +13,9 @@ class AmenitySerializer(ModelSerializer):
 
 
 class RoomDetailSerializer(ModelSerializer):
-
-  owner = TinyUserSerializer()
-  amenities = AmenitySerializer(many=True)   
-  category = CategorySerializer()      
+  owner = TinyUserSerializer(read_only=True)
+  amenities = AmenitySerializer(read_only=True, many=True)   
+  category = CategorySerializer(read_only=True)      
 
   class Meta: 
     model = Room 
