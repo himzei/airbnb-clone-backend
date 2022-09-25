@@ -31,19 +31,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 THIRD_PARTY_APPS = [
-    "rest_framework"
+    "rest_framework",
+    "rest_framework.authtoken",
 ]
 
-CUSTOM_APPS =[
+CUSTOM_APPS = [
     "common.apps.CommonConfig",
-    "users.apps.UsersConfig", 
-    "rooms.apps.RoomsConfig", 
+    "users.apps.UsersConfig",
+    "rooms.apps.RoomsConfig",
     "experiences.apps.ExperiencesConfig",
     "categories.apps.CategoriesConfig",
     "reviews.apps.ReviewsConfig",
-    "wishlists.apps.WishlistsConfig", 
-    "bookings.apps.BookingsConfig", 
-    "medias.apps.MediasConfig", 
+    "wishlists.apps.WishlistsConfig",
+    "bookings.apps.BookingsConfig",
+    "medias.apps.MediasConfig",
     "direct_messages.apps.DirectMessagesConfig",
 ]
 
@@ -56,7 +57,7 @@ SYSTEM_APPS = [
     "django.contrib.staticfiles",
 ]
 
-INSTALLED_APPS = SYSTEM_APPS + THIRD_PARTY_APPS + CUSTOM_APPS 
+INSTALLED_APPS = SYSTEM_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -142,4 +143,19 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Auth
-AUTH_USER_MODEL = "users.User";
+AUTH_USER_MODEL = "users.User"
+
+MEDIA_ROOT = "uploads"
+
+MEDIA_URL = "user-uploads/"
+
+PAGE_SIZE = 3
+
+# Default Setting Session
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "config.authentication.TrustMeBroAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+}
